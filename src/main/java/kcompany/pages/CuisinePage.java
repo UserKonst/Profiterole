@@ -40,12 +40,12 @@ public class CuisinePage {
 
     public void addDish(String dish) throws InterruptedException {
 
-        String xpath = "//label[contains(text(),'%s')]";
-        
+        String xpath = "//div[@id='cuisine']//label[contains(text(),'%s')]";
         driver.findElement(By.xpath(String.format(xpath, dish))).click();
-        
+
         Thread.sleep(2000);
-        
+
+        driver.findElement(By.ByXPath.xpath("//button[contains(text(),'Добавить')]")).click();
     }
 
 }

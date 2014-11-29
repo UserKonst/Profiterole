@@ -12,6 +12,7 @@ import kcompany.pages.MainPage;
 import kcompany.pages.MenuPage;
 import kcompany.pages.RecipePage;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 
 import org.junit.Test;
@@ -58,6 +59,8 @@ public class JUnitTest {
 
         Thread.sleep(2000);
 
+        Assert.assertTrue(menuPage.isDishPresent("Сырные палочки из пармезана"));
+        
     }
 
     @BeforeClass

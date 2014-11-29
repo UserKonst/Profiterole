@@ -45,4 +45,10 @@ public class MenuPage {
         return new RecipePage(driver);
     }
 
+    public boolean isDishPresent(String dish) {
+
+        String xp = "//div[@id='breakfast']//label[contains(text(),'%s')]";
+        return driver.findElement(By.xpath(String.format(xp, dish))).isDisplayed();
+    }
+
 }
