@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -22,6 +23,7 @@ public class RecipePage {
 
     public RecipePage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public RecipePage() {
@@ -30,16 +32,17 @@ public class RecipePage {
     @FindBy(id = "menu-header")
     public WebElement textMenuHeader;
 
-    public CuisinePage getCuisine(String cuisine) {
+    public CuisinePage selectCuisine(String cuisine) {
 
+        // xpath to select cuisine
         String xpath = "//img[@alt='%s']";
 
-        driver.findElement(By.xpath(String.format(xpath, cuisine)));
+        driver.findElement(By.xpath(String.format(xpath, cuisine))).click();
 
         new WebDriverWait(driver, 2).
                 until(ExpectedConditions.
                         elementToBeClickable(textMenuHeader));
-
+        System.out.println("sdlkfjlsd");
         return new CuisinePage(driver);
     }
 }

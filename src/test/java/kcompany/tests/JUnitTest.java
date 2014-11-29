@@ -6,6 +6,14 @@
 package kcompany.tests;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
+import kcompany.pages.CuisinePage;
+import kcompany.pages.MainPage;
+import kcompany.pages.MenuPage;
+import kcompany.pages.RecipePage;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -20,18 +28,49 @@ public class JUnitTest {
     public JUnitTest() {
     }
 
+    public static WebDriver driver;
+    public static FirefoxProfile profile;
+
     @Test
-    public void test() throws InterruptedException {
+    public void should_Create_Day_Menu() throws InterruptedException {
 
-        File file = new File("D:\\Fprofile");
-        FirefoxProfile profile = new FirefoxProfile(file);
+        driver = new FirefoxDriver(profile);
 
-        WebDriver driver = new FirefoxDriver(profile);
+        // Timeouts
+        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-        driver.get("http://habrahabr.ru/post/130912/");
+        // Open main page
+        MainPage mainPage = new MainPage(driver);
+        mainPage.getMainPage(driver);
+
+        // Select menu
+        MenuPage menuPage = mainPage.selectMenu("Меню на день");
+
+        // Select recipe
+        RecipePage recipePage = menuPage.selectRecipe("Завтрак");
+
+        // Select cuisine
+        CuisinePage cuisinePage = recipePage.selectCuisine("Французская");
+        cuisinePage.selectMenu("Закуски");
+
+        cuisinePage.addDish("Сырные палочки из пармезана");
 
         Thread.sleep(2000);
 
+    }
+
+    @BeforeClass
+    public static void setUp() {
+
+        File file = new File("D:\\Fprofile");
+        profile = new FirefoxProfile(file);
+
+    }
+
+    @AfterClass
+    public static void tearDown() {
         driver.quit();
     }
+
 }

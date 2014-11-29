@@ -33,7 +33,7 @@ public class MenuPage {
     @FindBy(id = "menu-header")
     public WebElement textMenuHeader;
 
-    public RecipePage getRecipePage(String recipe) {
+    public RecipePage selectRecipe(String recipe) {
 
         String xpath = "//button[contains(text(),'%s')]";
         driver.findElement(By.xpath(String.format(xpath, recipe))).click();

@@ -29,6 +29,9 @@ public class MainPage {
     public MainPage() {
     }
 
+    private final String baseURL = "http://gioia-profiterole.rhcloud.com";
+
+    //-------------------------------------------------------------------------
     @FindBy(xpath = "//a[contains(text(),'Создать меню')]")
     public WebElement buttonCreateMenu;
 
@@ -38,8 +41,9 @@ public class MainPage {
     @FindBy(xpath = "//button[contains(text(),'Завтрак')]")
     WebElement buttonZavtrak;
 
+    //--------------------------------------------------------------------------
     // Get page
-    public MenuPage getMenu(String menuType) {
+    public MenuPage selectMenu(String menuType) {
 
         // click and wait for list menu
         buttonCreateMenu.click();
@@ -57,5 +61,9 @@ public class MainPage {
                         visibilityOf(buttonZavtrak));
 
         return new MenuPage(driver);
+    }
+
+    public void getMainPage(WebDriver driver) {
+        driver.get(baseURL);
     }
 }

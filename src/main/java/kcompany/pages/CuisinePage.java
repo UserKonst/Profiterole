@@ -5,7 +5,9 @@
  */
 package kcompany.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
@@ -22,6 +24,28 @@ public class CuisinePage {
     }
 
     public CuisinePage() {
+    }
+
+    //-------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
+    public void selectMenu(String menu) {
+
+        // xpath to select menu
+        String xpath = "//a[contains(text(),'%s')]";
+
+        // click on menu
+        driver.findElement(By.xpath(String.format(xpath, menu))).click();
+
+    }
+
+    public void addDish(String dish) throws InterruptedException {
+
+        String xpath = "//label[contains(text(),'%s')]";
+        
+        driver.findElement(By.xpath(String.format(xpath, dish))).click();
+        
+        Thread.sleep(2000);
+        
     }
 
 }
