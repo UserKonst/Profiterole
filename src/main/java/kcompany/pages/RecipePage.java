@@ -28,10 +28,11 @@ public class RecipePage {
 
     public RecipePage() {
     }
-
+    //-------------------------  * WebElements * -------------------------------
     @FindBy(id = "menu-header")
     public WebElement textMenuHeader;
 
+    //----------------------------  * Methods * -------------------------------
     public CuisinePage selectCuisine(String cuisine) {
 
         // xpath to select cuisine
@@ -42,7 +43,7 @@ public class RecipePage {
         new WebDriverWait(driver, 2).
                 until(ExpectedConditions.
                         elementToBeClickable(textMenuHeader));
-       
+
         return new CuisinePage(driver);
     }
 }

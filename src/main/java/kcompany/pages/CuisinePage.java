@@ -26,25 +26,26 @@ public class CuisinePage {
     public CuisinePage() {
     }
 
-    //-------------------------------------------------------------------------
     //--------------------------------------------------------------------------
     public void selectMenu(String menu) {
 
         // xpath to select menu
         String xpath = "//a[contains(text(),'%s')]";
 
-        // click on menu
+        // click on drop-down list menu
         driver.findElement(By.xpath(String.format(xpath, menu))).click();
 
     }
 
+    // add dish to client menu
     public void addDish(String dish) throws InterruptedException {
 
         String xpath = "//div[@id='cuisine']//label[contains(text(),'%s')]";
+        
+        // click on selected dish
         driver.findElement(By.xpath(String.format(xpath, dish))).click();
 
-        Thread.sleep(2000);
-
+        // click button 'Добавить'
         driver.findElement(By.ByXPath.xpath("//button[contains(text(),'Добавить')]")).click();
     }
 

@@ -10,8 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  *
@@ -31,34 +29,22 @@ public class MainPage {
 
     private final String baseURL = "http://gioia-profiterole.rhcloud.com";
 
-    //-------------------------------------------------------------------------
+    //------------------------  * WebElements *  ------------------------------
     @FindBy(xpath = "//a[contains(text(),'Создать меню')]")
     public WebElement buttonCreateMenu;
 
     @FindBy(xpath = "//ul[@class='dropdown-menu']")
     public WebElement dropdownCreateMenu;
 
-    @FindBy(xpath = "//button[contains(text(),'Завтрак')]")
-    WebElement buttonZavtrak;
-
-    //--------------------------------------------------------------------------
-    // Get page
+    //----------------------------  * Methods * -------------------------------
     public MenuPage selectMenu(String menuType) {
 
-        // click and wait for list menu
+        // click on list menu
         buttonCreateMenu.click();
-        new WebDriverWait(driver, 2).
-                until(ExpectedConditions.
-                        elementToBeClickable(dropdownCreateMenu));
 
-        // click on type of menu
+        // click on menu type
         String xpath = "//a[contains(text(),'%s')]";
         driver.findElement(By.xpath(String.format(xpath, menuType))).click();
-
-        // Wait for buttons appears
-        new WebDriverWait(driver, 2).
-                until(ExpectedConditions.
-                        visibilityOf(buttonZavtrak));
 
         return new MenuPage(driver);
     }

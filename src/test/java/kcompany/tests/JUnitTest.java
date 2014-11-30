@@ -11,9 +11,12 @@ import kcompany.pages.CuisinePage;
 import kcompany.pages.MainPage;
 import kcompany.pages.MenuPage;
 import kcompany.pages.RecipePage;
+import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Assert;
+import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -29,17 +32,16 @@ public class JUnitTest {
     public JUnitTest() {
     }
 
-    public static WebDriver driver;
-    public static FirefoxProfile profile;
+    public WebDriver driver;
+    public FirefoxProfile profile;
+
+    @Before
+    public void setUpTest() {
+
+    }
 
     @Test
-    public void should_Create_Day_Menu() throws InterruptedException {
-
-        driver = new FirefoxDriver(profile);
-
-        // Timeouts
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+    public void should_Display_SirnyePalochki_Selected_From_Day_Menu() throws InterruptedException {
 
         // Open main page
         MainPage mainPage = new MainPage(driver);
@@ -49,31 +51,66 @@ public class JUnitTest {
         MenuPage menuPage = mainPage.selectMenu("Меню на день");
 
         // Select recipe
-        RecipePage recipePage = menuPage.selectRecipe("Завтрак");
+        RecipePage recipePage = menuPage.selectRecipe("Ужин");
 
-        // Select cuisinefirefox.exe -p
+        // Select cuisine
         CuisinePage cuisinePage = recipePage.selectCuisine("Французская");
         cuisinePage.selectMenu("Закуски");
 
-        cuisinePage.addDish("Сырные палочки из пармезана");
+        // Select dish
+        String dish = "Сырные палочки из пармезана";
+        cuisinePage.addDish(dish);
 
-        System.out.println("test");
+        assertTrue(menuPage.is_Selected_Dish_Presents_in_Users_Menu(dish));
 
-        Assert.assertTrue(menuPage.isDishPresent("Сырные палочки из пармезана"));
-        
     }
 
-    @BeforeClass
-    public static void setUp() {
+    @Test
+    public void should_Display_SirnyePalochki_Selected_Week_Menu() throws InterruptedException {
+
+        // Open main page
+        MainPage mainPage = new MainPage(driver);
+        mainPage.getMainPage(driver);
+
+        // Select menu
+        MenuPage menuPage = mainPage.selectMenu("Меню на неделю");
+
+        // Select day
+        menuPage.selectDay("Вт");
+
+        // Select recipe
+        RecipePage recipePage = menuPage.selectRecipe("Обед");
+
+        // Select cuisine
+        CuisinePage cuisinePage = recipePage.selectCuisine("Французская");
+        cuisinePage.selectMenu("Закуски");
+
+        // Select dish
+        String dish = "Сырные палочки из пармезана";
+        cuisinePage.addDish(dish);
+
+        assertTrue(menuPage.is_Selected_Dish_Presents_in_Users_Menu(dish));
+
+    }
+
+    @Before
+    public void setUp() {
 
         File file = new File("D:\\Fprofile");
         profile = new FirefoxProfile(file);
+        driver = new FirefoxDriver(profile);
+
+        // Timeouts
+        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
     }
 
-    @AfterClass
-    public static void tearDown() {
+    @After
+    public void tearDown() {
+        driver.manage().deleteAllCookies();
         driver.quit();
+
     }
 
 }
