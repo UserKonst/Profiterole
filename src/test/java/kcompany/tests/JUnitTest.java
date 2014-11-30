@@ -66,7 +66,7 @@ public class JUnitTest {
     }
 
     @Test
-    public void should_Display_SirnyePalochki_Selected_From_Week_Menu() throws InterruptedException {
+    public void should_Display_SirnyePalochki_Selected_From_Week_Men() throws InterruptedException {
 
         // Open main page
         MainPage mainPage = new MainPage(driver);
