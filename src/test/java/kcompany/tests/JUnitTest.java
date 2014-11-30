@@ -61,12 +61,12 @@ public class JUnitTest {
         String dish = "Сырные палочки из пармезана";
         cuisinePage.addDish(dish);
 
-        assertTrue(menuPage.is_Selected_Dish_Presents_in_Users_Menu(dish));
+        assertTrue(menuPage.does_Selected_Dish_Present_in_Users_Menu(dish));
 
     }
 
     @Test
-    public void should_Display_SirnyePalochki_Selected_Week_Menu() throws InterruptedException {
+    public void should_Display_SirnyePalochki_Selected_From_Week_Menu() throws InterruptedException {
 
         // Open main page
         MainPage mainPage = new MainPage(driver);
@@ -89,15 +89,15 @@ public class JUnitTest {
         String dish = "Сырные палочки из пармезана";
         cuisinePage.addDish(dish);
 
-        assertTrue(menuPage.is_Selected_Dish_Presents_in_Users_Menu(dish));
+        assertTrue(menuPage.does_Selected_Dish_Present_in_Users_Menu(dish));
 
     }
 
     @Before
     public void setUp() {
 
-        File file = new File("D:\\Fprofile");
-        profile = new FirefoxProfile(file);
+//        File file = new File("D:\\Fprofile");
+//        profile = new FirefoxProfile(file);
         driver = new FirefoxDriver(profile);
 
         // Timeouts
