@@ -51,13 +51,13 @@ public class JUnitTest {
         // Select recipe
         RecipePage recipePage = menuPage.selectRecipe("Завтрак");
 
-        // Select cuisine
+        // Select cuisinefirefox.exe -p
         CuisinePage cuisinePage = recipePage.selectCuisine("Французская");
         cuisinePage.selectMenu("Закуски");
 
         cuisinePage.addDish("Сырные палочки из пармезана");
 
-        Thread.sleep(2000);
+        System.out.println("test");
 
         Assert.assertTrue(menuPage.isDishPresent("Сырные палочки из пармезана"));
         

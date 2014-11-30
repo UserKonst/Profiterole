@@ -42,7 +42,7 @@ public class RecipePage {
         new WebDriverWait(driver, 2).
                 until(ExpectedConditions.
                         elementToBeClickable(textMenuHeader));
-        System.out.println("sdlkfjlsd");
+       
         return new CuisinePage(driver);
     }
 }
