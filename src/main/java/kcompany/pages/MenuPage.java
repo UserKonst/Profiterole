@@ -56,7 +56,7 @@ public class MenuPage {
         return new RecipePage(driver);
     }
 
-    public boolean is_Selected_Dish_Presents_in_Users_Menu(String dish) {
+    public boolean does_Selected_Dish_Present_in_Users_Menu(String dish) {
 
         String xpath;
 
