@@ -94,7 +94,7 @@ public class JUnitTest {
 
 //        File file = new File("D:\\Fprofile");
 //        profile = new FirefoxProfile(file);
-        driver = new FirefoxDriver(profile);
+        driver = new FirefoxDriver();
 
         // Timeouts
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
