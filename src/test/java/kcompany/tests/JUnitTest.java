@@ -35,11 +35,7 @@ public class JUnitTest {
     public WebDriver driver;
     public FirefoxProfile profile;
 
-    @Before
-    public void setUpTest() {
-
-    }
-
+    
     @Test
     public void should_Display_SirnyePalochki_Selected_From_Day_Menu() throws InterruptedException {
 
@@ -61,7 +57,7 @@ public class JUnitTest {
         String dish = "Сырные палочки из пармезана";
         cuisinePage.addDish(dish);
 
-        assertTrue(menuPage.does_Selected_Dish_Present_in_Users_Menu(dish));
+        assertTrue("Выбранное блюдо не отображается в меню", menuPage.does_Selected_Dish_Present_in_Users_Menu(dish));
 
     }
 
@@ -89,7 +85,7 @@ public class JUnitTest {
         String dish = "Сырные палочки из пармезана";
         cuisinePage.addDish(dish);
 
-        assertTrue(menuPage.does_Selected_Dish_Present_in_Users_Menu(dish));
+        assertTrue("Выбранное блюдо не отображается в меню", menuPage.does_Selected_Dish_Present_in_Users_Menu(dish));
 
     }
 
