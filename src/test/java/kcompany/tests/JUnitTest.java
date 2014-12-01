@@ -5,18 +5,14 @@
  */
 package kcompany.tests;
 
-import java.io.File;
 import java.util.concurrent.TimeUnit;
 import kcompany.pages.CuisinePage;
 import kcompany.pages.MainPage;
 import kcompany.pages.MenuPage;
 import kcompany.pages.RecipePage;
 import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
 
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -57,12 +53,12 @@ public class JUnitTest {
         String dish = "Сырные палочки из пармезана";
         cuisinePage.addDish(dish);
 
-        assertTrue("Выбранное блюдо не отображается в меню", menuPage.does_Selected_Dish_Present_in_Users_Menu(dish));
+        assertTrue("Выбранное блюдо не отображается в меню", menuPage.isDishPresent(dish));
 
     }
 
     @Test
-    public void should_Display_SirnyePalochki_Selected_From_Week_Men() throws InterruptedException {
+    public void should_Display_SirnyePalochki_Selected_From_Week_Menu() throws InterruptedException {
 
         // Open main page
         MainPage mainPage = new MainPage(driver);
@@ -85,7 +81,7 @@ public class JUnitTest {
         String dish = "Сырные палочки из пармезана";
         cuisinePage.addDish(dish);
 
-        assertTrue("Выбранное блюдо не отображается в меню", menuPage.does_Selected_Dish_Present_in_Users_Menu(dish));
+        assertTrue("Выбранное блюдо не отображается в меню", menuPage.isDishPresent(dish));
 
     }
 
@@ -98,7 +94,7 @@ public class JUnitTest {
 
         // Timeouts
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
 
