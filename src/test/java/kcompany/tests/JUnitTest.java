@@ -13,6 +13,7 @@ import kcompany.pages.RecipePage;
 import org.junit.After;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.Ignore;
 
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +32,7 @@ public class JUnitTest {
     public WebDriver driver;
     public FirefoxProfile profile;
 
-    
+    @Ignore
     @Test
     public void should_Display_SirnyePalochki_Selected_From_Day_Menu() throws InterruptedException {
 
@@ -57,6 +58,7 @@ public class JUnitTest {
 
     }
 
+    @Ignore
     @Test
     public void should_Display_SirnyePalochki_Selected_From_Week_Menu() throws InterruptedException {
 
@@ -95,7 +97,7 @@ public class JUnitTest {
         // Timeouts
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+        driver.manage().window().maximize();
     }
 
     @After

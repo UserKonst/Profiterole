@@ -13,6 +13,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.htmlelements.annotations.Block;
 
 /**
  *
@@ -35,6 +36,8 @@ public class MenuPage {
         PageFactory.initElements(driver, this);
     }
 
+    
+    
     //-------------------------  * WebElements * -------------------------------
     @FindBy(id = "menu-header")
     public WebElement textMenuHeader;
@@ -56,7 +59,7 @@ public class MenuPage {
         return new RecipePage(driver);
     }
 
-    public boolean does_Selected_Dish_Present_in_Users_Menu(String dish) {
+    public boolean isDishPresent(String dish) {
 
         String xpath;
 
