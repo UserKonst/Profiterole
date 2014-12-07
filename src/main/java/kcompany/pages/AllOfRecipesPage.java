@@ -37,8 +37,6 @@ public class AllOfRecipesPage {
     public AllOfRecipesPage() {
     }
     //-------------------------  * WebElements * -------------------------------
-    @FindBy(id = "menu-header")
-    public WebElement textMenuHeader;
 
     @FindBy(id = "back")
     public WebElement buttonBack;
@@ -47,20 +45,6 @@ public class AllOfRecipesPage {
     public WebElement linkSnacks;
 
     //----------------------------  * Methods * -------------------------------
-    public CuisinePage selectCuisine(String cuisine) {
-
-        // xpath to select cuisine
-        String xpath = "//img[@alt='%s']";
-
-        driver.findElement(By.xpath(String.format(xpath, cuisine))).click();
-
-        new WebDriverWait(driver, 2).
-                until(ExpectedConditions.
-                        elementToBeClickable(textMenuHeader));
-
-        return new CuisinePage(driver);
-    }
-
     public Set<Cuisine> findAllCousines() {
 
         Set<Cuisine> setCuisines = new HashSet<>();
