@@ -5,45 +5,23 @@
  */
 package kcompany.tests;
 
-import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 import kcompany.clasess.Cuisine;
 import kcompany.pages.AllOfRecipesPage;
 import kcompany.pages.MainPage;
-import org.junit.After;
 import static org.junit.Assert.*;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
+
 
 /**
  *
  * @author Konst
  */
-public class SampleTest {
+public class TestCuisines extends SetUpAndTearDown{
 
-    private WebDriver driver; //= new FirefoxDriver();
-    public FirefoxProfile profile;
-
-    @Before
-    public void loadPage() {
-
-        File file = new File("D:\\Fprofile");
-        profile = new FirefoxProfile(file);
-        driver = new FirefoxDriver(profile);
-
-        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-
-    }
-
-    @Test
+     @Test
     public void AllOfRecipesPage_Should_Contains_12_Cuisines() throws InterruptedException {
 
         MainPage mainPage = new MainPage(driver);
@@ -70,7 +48,7 @@ public class SampleTest {
         assertEquals("Ukrainian cuisine doesn't have 5 snacks", 5, ukrSnacks);
 
     }
-    
+
     @Test
     public void AllOfRecipesPage_Should_Contains_16_Snacks() {
 
@@ -82,20 +60,14 @@ public class SampleTest {
         mapRecipes = recipesPage.findAllSnacksPerCousine();
 
         int allSnacks = 0;
-        
+
         for (Map.Entry<Cuisine, List<String>> entrySet : mapRecipes.entrySet()) {
-            //Cuisine key = entrySet.getKey();
-            List<String> value = entrySet.getValue();
-            allSnacks = allSnacks + value.size();
+            allSnacks += entrySet.getValue().size();
         }
-             
+
         assertEquals("All cuisines don't have 16 snacks", 16, allSnacks);
 
     }
-    
-    @After
-    public void closeDriver() {
-        driver.manage().deleteAllCookies();
-        driver.quit();
-    }
+
+   
 }
