@@ -5,7 +5,7 @@
  */
 package kcompany.blocks;
 
-import kcompany.pages.MenuPage;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
