@@ -5,6 +5,7 @@
  */
 package kcompany.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.annotations.Block;
 import ru.yandex.qatools.htmlelements.annotations.Name;
@@ -19,7 +20,7 @@ import ru.yandex.qatools.htmlelements.element.TextInput;
 @Name("Search form")
 @Block(
         @FindBy(xpath = "//form"))
-public class SearchArrow extends HtmlElement {
+public class MenuForWeekPage extends HtmlElement {
 
     @Name("Search request input")
     @FindBy(id = "text")
@@ -28,6 +29,10 @@ public class SearchArrow extends HtmlElement {
     @Name("Search button")
     @FindBy(className = "button__text")
     private Button searchButton;
+
+    MenuForWeekPage(WebDriver driver) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public void search(String request) {
         requestInput.sendKeys(request);

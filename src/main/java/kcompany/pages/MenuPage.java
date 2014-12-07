@@ -13,7 +13,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.yandex.qatools.htmlelements.annotations.Block;
+
 
 /**
  *
@@ -43,7 +43,7 @@ public class MenuPage {
     public WebElement textMenuHeader;
 
     //----------------------------  * Methods * -------------------------------
-    public RecipePage selectRecipe(String partOfDay) {
+    public AllOfRecipesPage selectRecipe(String partOfDay) {
 
         // set part of daty for xpath in other methods
         this.partOfDay = partOfDay;
@@ -56,7 +56,7 @@ public class MenuPage {
                 until(ExpectedConditions.
                         elementToBeClickable(textMenuHeader));
 
-        return new RecipePage(driver);
+        return new AllOfRecipesPage(driver);
     }
 
     public boolean isDishPresent(String dish) {
