@@ -27,7 +27,6 @@
             <version>4.10</version>
             <scope>test</scope>
         </dependency>
-        
         <!--        htmlelements-java-->
         <dependency>
             <groupId>ru.yandex.qatools.htmlelements</groupId>
@@ -46,7 +45,6 @@
             <artifactId>commons-lang</artifactId>
             <version>2.3</version>
         </dependency>
-
-        
+       
     </dependencies>
 </project>
