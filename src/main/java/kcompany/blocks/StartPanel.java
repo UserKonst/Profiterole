@@ -42,10 +42,6 @@ public class StartPanel extends HtmlElement {
       
     }
 
-//    public void getMenuForWeek() {
-//        createMenu.click();
-//        menuForWeek.click();
-//    }
     public void getAllRecipes() {
         recipes.click();
         allRecipes.click();
