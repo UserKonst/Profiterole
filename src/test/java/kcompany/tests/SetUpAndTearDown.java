@@ -7,6 +7,7 @@ package kcompany.tests;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+import kcompany.clasess.Browsers;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -24,6 +25,7 @@ public class SetUpAndTearDown {
 
     public WebDriver driver; //= new FirefoxDriver();
     public FirefoxProfile profile;
+    private final Browsers browser = new Browsers();
 
     @After
     public void TearDown() {
@@ -36,7 +38,8 @@ public class SetUpAndTearDown {
 
         File file = new File("D:\\Fprofile");
         profile = new FirefoxProfile(file);
-        driver = new FirefoxDriver(profile);
+        
+        driver = new FirefoxDriver();
 
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
