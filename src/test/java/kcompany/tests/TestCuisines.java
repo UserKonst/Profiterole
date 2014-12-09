@@ -12,6 +12,7 @@ import kcompany.clasess.Cuisine;
 import kcompany.pages.AllOfRecipesPage;
 import kcompany.pages.MainPage;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 import org.junit.Test;
 
 
@@ -21,6 +22,7 @@ import org.junit.Test;
  */
 public class TestCuisines extends SetUpAndTearDown{
 
+    
      @Test
     public void AllOfRecipesPage_Should_Contains_12_Cuisines() throws InterruptedException {
 
@@ -34,6 +36,7 @@ public class TestCuisines extends SetUpAndTearDown{
         assertEquals("Amount of cuisines isn't 12", 12, setCuisine.size());
     }
 
+    @Ignore
     @Test
     public void Ukrainian_Cuisine_Should_Contains_5_Snacks() {
 
@@ -49,6 +52,7 @@ public class TestCuisines extends SetUpAndTearDown{
 
     }
 
+    @Ignore
     @Test
     public void AllOfRecipesPage_Should_Contains_16_Snacks() {
 

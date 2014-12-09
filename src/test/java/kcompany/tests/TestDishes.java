@@ -10,6 +10,7 @@ import kcompany.pages.MainPage;
 import kcompany.pages.MenuForWeekPage;
 import kcompany.pages.MenuPage;
 import static org.junit.Assert.assertTrue;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -21,6 +22,7 @@ public class TestDishes extends SetUpAndTearDown{
     public TestDishes() {
     }
 
+    @Ignore
     @Test
     public void should_Display_SirnyePalochki_Selected_From_MenuPage() throws InterruptedException {
 
@@ -39,6 +41,7 @@ public class TestDishes extends SetUpAndTearDown{
 
     }
 
+    @Ignore
     @Test
     public void should_Display_SirnyePalochki_Selected_From_MenuForWeekPage() throws InterruptedException {
 
